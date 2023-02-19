@@ -16,8 +16,17 @@ print(name[5:12])       #this : acts like range like in Excel viz. SUM(A7:Z7)
 
 print(name.lower())
 print(name.upper())
-print(name.isupper())  #.isupper, .islower is OOP s that check whether a string is in uppercase or lowercase
+print(name.title())  #Titlesizing means first letter of every word is capital
+print(name.isupper())  #.isupper, .islower is OOP s that check whether a string is in uppercase or lowercase (Ans FALSE)
 print(name.islower())  #returns in Boolean
+print(name.istitle())  #returns in Boolean (Ans TRUE)
 print(name[0].isupper()) #Tells the first letter in our string is Uppercase
 print(name[1:6].islower())
+print(name[5:10].title())
 print(name[7].isspace()) #Isspace checks whether it is White Space or not
+
+
+
+
+
+
