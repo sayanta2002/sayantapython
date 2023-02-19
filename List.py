@@ -20,7 +20,7 @@ Pi.reverse()
 print(Pi)
 
 fruits.extend(["Orange" , "Nuts"]) #Use extend to insert one or more elements in the list
-print(fruits)                       # Works just like append, attaches elements at the end of the list
+print(fruits)                       # attaches elements at the end of the list but the elements gets mixed well
 
 # use insert to plug new elements in a list according to your desired position
 
@@ -31,6 +31,13 @@ print(fruits)
 
 m = [6 , 9 , "Our", "Planet"]
 l = ["Earth", "is not", "that Green anymore"]
+o = ["well", "for the next century"]
 
 m.extend(l)
 print(m)
+
+l.append(o)
+print(l)
+l.reverse()
+print(l)
+print(l[2])
