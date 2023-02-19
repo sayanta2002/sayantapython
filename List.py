@@ -26,3 +26,11 @@ print(fruits)                       # Works just like append, attaches elements 
 
 fruits.insert(3, "Jackfruit")
 print(fruits)
+
+#We can attach strings with strings using extend function
+
+m = [6 , 9 , "Our", "Planet"]
+l = ["Earth", "is not", "that Green anymore"]
+
+m.extend(l)
+print(m)
