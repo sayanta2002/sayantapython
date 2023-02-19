@@ -20,4 +20,4 @@ print(name.isupper())  #.isupper, .islower is OOP s that check whether a string 
 print(name.islower())  #returns in Boolean
 print(name[0].isupper()) #Tells the first letter in our string is Uppercase
 print(name[1:6].islower())
-print(name[7].isspace()) #Isspace is
+print(name[7].isspace()) #Isspace checks whether it is White Space or not
