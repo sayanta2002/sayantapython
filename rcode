@@ -1,0 +1,137 @@
+library(rvest)
+library(tidyverse)
+
+# Find all top 250 movies
+html <- read_html("https://www.imdb.com/chart/top/")
+
+name <- html %>%
+  html_elements(".ipc-title-link-wrapper") %>%
+  html_text()
+
+name <- name[1:250]
+name <- sapply(1:250, function(k) strsplit(name[k], as.character(k))[[1]][2] )
+name <- substring(name, 3)
+
+
+#ratings
+
+#unweighted mean
+
+links <- html %>%
+  html_elements(".ipc-lockup-overlay.ipc-focusable")%>%
+  html_attr("href")
+
+foo <- strsplit(links, "/")
+titles <- substring(links, 8, 16)
+rate.links <- paste0("https://www.imdb.com/title/", titles,"/ratings/")
+rating.vec <- NULL
+
+unweighted <- rep(NA, 250)
+
+
+
+for(i in 1:250)
+{
+  print(i)
+  html <- read_html(rate.links[i])
+  rating.link <- html %>% html_elements(".sc-32706d9c-1.dRWuAv")
+  rating.link <- html_text(rating.link)
+  unweighted[i] <- as.numeric(substring(rating.link, 1,3))
+}
+
+
+
+
+
+#Problem Set Q14
+
+#Ranking
+
+html <- read_html("https://editorial.rottentomatoes.com/guide/best-netflix-movies-to-watch-right-now/")
+ranking <- html %>% html_elements(".countdown-index-resposive") %>% html_text()
+ranking <- substring(ranking, 2)
+ranking <- as.numeric(ranking)
+ranking
+
+#Name of the Movie
+
+title <- html %>% html_elements(".article_movie_title a") %>% html_text()
+title
+
+#tomatio peercentage
+tomato <- html %>% html_elements(".tMeterScore") %>% html_text()
+
+
+#Year
+year <- html %>% html_elements(".subtle.start-year") %>% html_text()
+year <- substring(year, 2,5)
+year
+
+
+#Problem 16
+
+#question
+stack <- read_html("https://stats.stackexchange.com/questions?tab=Votes")
+question <- stack %>% html_elements(".s-post-summary--content-title a") %>% html_text()
+question
+
+#votes
+
+votes <- stack %>% html_elements(".s-post-summary--stats-item-number") %>% html_text()
+votes[seq(3, 45, by = 3 )]
+
+
+
+
+n <- 3
+m <- 2
+A <- matrix(runif(n*m), nrow = n, ncol = m)
+A
+
+library(rvest)
+library(dplyr)
+
+
+# Problem 1
+html <- read_html("https://www.icc-cricket.com/rankings/womens/player-rankings/odi/batting")
+
+dat <- html %>% html_table()
+# this is equivalent
+dat <- html_table(html)
+dat <- dat[[1]]
+temp <- dat$Pos
+extract <- sapply(1:100, function(t) strsplit(temp[t], "\n")[[1]][1])
+
+for(i in 1:100)
+{
+  if(extract[i]== "=")
+  {
+    extract[i] = extract[i-1]
+  }
+}
+ 
+dat$Pos <- as.numeric(extract)
+dat$Pos
+
+data(mtcars)
+head(mtcars)  # look at the data
+?mtcars  # search for information on data
+
+
+## Problem 5
+# making a grouped tibble by cylinder
+by_cyl <- mtcars %>% group_by(gear)
+by_cyl
+# summarizing with table of average disp and horsepower
+by_cyl %>% summarise(
+  avg_disp = mean(disp),
+  avg_hp = mean(hp)
+)
+
+
+#problem 6
+cricket <- read.csv("battingbowling.csv")
+
+
+
+
